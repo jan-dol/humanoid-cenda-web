@@ -1,200 +1,231 @@
 <!DOCTYPE html>
-<html lang="cz">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Č.e.n.d.a</title>
+    <title>Č.e.n.d.a – Studentský humanoid</title>
+    <meta name="description" content="Č.e.n.d.a je studentský projekt humanoidního robota, který interaguje s lidmi a povídá si s nimi. Paže tištěné na 3D tiskárně, umělá inteligence a podvozek.">
+    <meta name="theme-color" content="#0b0c0a">
+    <meta property="og:title" content="Č.e.n.d.a – Studentský humanoid">
+    <meta property="og:description" content="Humanoidní robot, který interaguje s lidmi a povídá si s nimi.">
+    <meta property="og:image" content="assets/telo.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Space+Grotesk:wght@500..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 </head>
 <body>
-    <header>
-        <div>
-            <a href="/"><img class="logo" src="assets/logo-cenda.png" alt="logo"></a>
-        </div>
-        <button class="hamburger-menu" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+    <header class="site-header">
+        <a href="#top" class="brand" aria-label="Č.e.n.d.a – domů">
+            <img src="assets/logo-cenda.png" alt="Č.e.n.d.a" height="22">
+        </a>
+        <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+            <span></span><span></span>
         </button>
-        <nav>
-            <ul>
-                <li><a href="#harmonogram">Kde nás najdete?</a></li>
-                <li><a href="#o-projektu">O projektu</a></li>
-                <li><a href="#tym">Náš tým</a></li>
-                <!-- <li><a href="#galerie">Galerie</a></li> -->
-            </ul>
-            <a href="#kontakt" class="button">Kontakt</a>
+        <nav id="nav" class="nav">
+            <a href="#o-projektu">O projektu</a>
+            <a href="#harmonogram">Kde nás najdete</a>
+            <a href="#tym">Tým</a>
+            <a href="#kontakt" class="btn btn-sm">Kontakt</a>
         </nav>
     </header>
-    <aside> 
-        <section class="hero-section">
-            <img class="hero-image" src="./assets/telo.png" alt="Hero image">
-            <div class="logo-and-slogan">
-                <img class="logo" src="assets/logo-cenda.png" alt="logo">
-                <span class="slogan">Studentský Humanoid</span>
-            </div>
-            <a href="#projekt" class="button">O projektu</a>
-        </section>
-    </aside>
-    <main id="projekt">
-        <h2 id="o-projektu">O projektu</h2>
-        <section>
-            <div class="textbox">
-                <h3>Vize</h3>
-                <p><strong>Humanoidní robot</strong> který <strong>interaguje s lidmi</strong> a povídá si s nimi. To je naše vize.</p>
-            </div>
-            <!-- <div class="model"></div> -->
-        </section>
-        <section>
-            <div class="model-container">
-                <img class="model-image" src="assets/head.png" alt="telo">
-                <!-- <model-viewer class="model" alt="" src="assets/3dbenchy.glb" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer> -->
-            </div>
-            <div class="textbox">
-                <h3>Hlava</h3>
-                <p>
-                    Hlavně neztratit hlavu. Protože hlava řídí vše. Vidí vše. <br>
-                    A o rozhodování se stará <strong>intelignece</strong> ...ta <strong>umělá</strong>.
-                </p>
-            </div>
-        </section> 
-        <section>
-            <div class="textbox">
-                <h3>Tělo</h3>
-                <p>Dvě paže z plastu. Kompletně tištěné na <strong>3D tiskárně</strong>.</p>
-            </div>
-            <div class="model-container">
-                <img class="model-image" src="assets/telo.png" alt="telo">
-                <!-- <model-viewer class="model" alt="" src="assets/3dbenchy.glb" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer> -->
-            </div>
-        </section>
-        <section>
-            <div class="model-container">
-                <!-- <img class="model-image" src="assets/podvozek.jpg" alt="telo"> -->
-                <model-viewer class="model" alt="" src="assets/assembly.glb" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
 
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-text">
+                <span class="eyebrow"><i></i> Studentský projekt · SSPŠ Praha</span>
+                <h1>Robot, který si <span class="accent">povídá</span> s&nbsp;lidmi.</h1>
+                <p class="lead">Č.e.n.d.a je humanoid stavěný od nuly studenty. 3D tištěné paže, umělá inteligence a vize chodícího robota.</p>
+                <div class="hero-actions">
+                    <a href="#o-projektu" class="btn">Poznejte projekt</a>
+                    <a href="#kontakt" class="btn btn-ghost">Napište nám</a>
+                </div>
             </div>
-            <div class="textbox">
-                <h3>Nohy</h3>
-                <p>Nohy? Podvozek! Na chodícího <strong>humanoida</strong> se můžete těšit v boudoucnu.</p>
+            <figure class="hero-visual">
+                <img src="assets/telo.jpg" alt="Dvě černé 3D tištěné paže robota na hliníkovém rámu" fetchpriority="high">
+                <figcaption><span class="dot"></span> Aktuální prototyp</figcaption>
+            </figure>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats reveal" aria-label="Projekt v kostce">
+            <div><strong>5</strong><span>členů týmu</span></div>
+            <div><strong>2</strong><span>3D tištěné paže</span></div>
+            <div><strong>1</strong><span>společná vize</span></div>
+        </section>
+
+        <!-- O PROJEKTU -->
+        <section id="o-projektu" class="section">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i></i> O projektu</span>
+                <h2>Jak vypadá náš humanoid</h2>
             </div>
-        </section> 
-    </main>
-    <section id="harmonogram" class="first-after-hero">
-            <h2>Kde nás najdete?</h2>
-            <ul>
-                <li>dny otevřených dveří <a href="https://www.ssps.cz" target="_blank">Střední průmyslové školy a gymnázia</a></li>
-                <li>výstava MakerFaire Prague</li>
-                <li>konference OpenAlt</li>
-                <li>i vsude jinde!!</li>
+
+            <div class="bento">
+                <article class="card card-vision reveal">
+                    <span class="tag">Vize</span>
+                    <h3>Robot, se kterým si popovídáte.</h3>
+                    <p><strong>Humanoidní robot</strong>, který <strong>interaguje s lidmi</strong> a povídá si s nimi. To je naše vize.</p>
+                </article>
+
+                <article class="card card-head reveal">
+                    <img src="assets/head.png" alt="3D model hlavy robota" loading="lazy">
+                    <div class="card-body">
+                        <span class="tag">Hlava</span>
+                        <h3>Hlavně neztratit hlavu.</h3>
+                        <p>Hlava řídí vše a vidí vše. O rozhodování se stará <strong>inteligence</strong> … ta <strong>umělá</strong>.</p>
+                    </div>
+                </article>
+
+                <article class="card card-body-part reveal">
+                    <img src="assets/telo.jpg" alt="Paže robota na hliníkovém rámu" loading="lazy">
+                    <div class="card-body">
+                        <span class="tag">Tělo</span>
+                        <h3>Dvě paže z plastu.</h3>
+                        <p>Kompletně tištěné na <strong>3D tiskárně</strong>.</p>
+                    </div>
+                </article>
+
+                <article class="card card-legs reveal">
+                    <div class="viewer-wrap">
+                        <model-viewer alt="3D model podvozku robota" src="assets/assembly.glb" shadow-intensity="1" camera-controls auto-rotate touch-action="pan-y" loading="lazy"></model-viewer>
+                        <span class="viewer-hint">Otáčejte myší nebo prstem</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Nohy</span>
+                        <h3>Nohy? Podvozek!</h3>
+                        <p>Na chodícího <strong>humanoida</strong> se můžete těšit v budoucnu.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- KDE NÁS NAJDETE -->
+        <section id="harmonogram" class="section">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i></i> Události</span>
+                <h2>Kde nás najdete?</h2>
+            </div>
+            <ul class="events">
+                <li class="reveal">
+                    <span class="num">01</span>
+                    <div>
+                        <h3>Dny otevřených dveří</h3>
+                        <p><a href="https://www.ssps.cz" target="_blank" rel="noopener">Střední průmyslová škola a gymnázium</a></p>
+                    </div>
+                </li>
+                <li class="reveal">
+                    <span class="num">02</span>
+                    <div>
+                        <h3>MakerFaire Prague</h3>
+                        <p>Výstava tvůrců a vynálezců</p>
+                    </div>
+                </li>
+                <li class="reveal">
+                    <span class="num">03</span>
+                    <div>
+                        <h3>Konference OpenAlt</h3>
+                        <p>Otevřené technologie a komunita</p>
+                    </div>
+                </li>
+                <li class="reveal">
+                    <span class="num">04</span>
+                    <div>
+                        <h3>I všude jinde!</h3>
+                        <p>Sledujte nás na Instagramu</p>
+                    </div>
+                </li>
             </ul>
-            
         </section>
-        <!-- <section id="o-projektu">
-            <h2>O projektu</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, iure atque. Cum ullam laudantium nemo, ipsa atque odit non suscipit reiciendis! Eligendi, nemo reprehenderit. Eligendi veniam delectus esse a incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quae dolore. Quidem ea distinctio, molestiae commodi quos, natus cumque qui in doloremque consectetur iure cum alias tenetur obcaecati minus. Sapiente?</p>
-            <a href="#projekt" class="text-btn">Více o projektu</a>
-        </section> -->
-        <section id="tym">
-            <h2>Náš tým</h2>
-            <div class="cards">
-                <div class="clen-tymu">
-                    <img src="assets/dolezal.jpg" alt="profilovka">
-                    <p class="jmeno">Jan Doležal</p>
-                    <p class="skola">SSPŠ</p>
-                    <p class="role">Vedení týmu</p>
-                    <p class="quote"></p>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="clen-tymu">
-                    <img src="assets/vitousek.jpg" alt="profilovka">
-                    <p class="jmeno">Jan Vitousek</p>
-                    <p class="skola">SSPŠ</p>
-                    <p class="quote"></p>
-                </div>
-                <div class="clen-tymu">
-                    <img src="assets/pfp-placeholder.png" alt="profilovka">
-                    <p class="jmeno">Jan Beneš</p>
-                    <p class="skola">SPŠSE České Budějovice</p>
-                    <p class="quote"></p>
 
-                </div>
-                <div class="clen-tymu">
-                    <img src="assets/pfp-placeholder.png" alt="profilovka">
-                    <p class="jmeno">Šimon Kubec</p>
-                    <p class="skola">SSPŠ</p>
-                    <p class="quote"></p>
-                </div>
-                <div class="clen-tymu">
-                    <img src="assets/pfp-placeholder.png" alt="profilovka">
-                    <p class="jmeno">Jakub Kohoutek</p>
-                    <p class="skola">SSPŠ</p>
-                    <p class="quote"></p>
-                </div>
+        <!-- TÝM -->
+        <section id="tym" class="section">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i></i> Tým</span>
+                <h2>Lidé za robotem</h2>
             </div>
-            <button class="toggle-arrow" aria-label="Zobrazit více">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
-            </button>
+            <div class="team">
+                <article class="member lead-member reveal">
+                    <img src="assets/dolezal.jpg" alt="Jan Doležal" loading="lazy">
+                    <div>
+                        <h3>Jan Doležal</h3>
+                        <p class="role">Vedení týmu</p>
+                        <p class="school">SSPŠ</p>
+                    </div>
+                </article>
+                <article class="member reveal">
+                    <img src="assets/vitousek.jpg" alt="Jan Vitousek" loading="lazy">
+                    <div>
+                        <h3>Jan Vitousek</h3>
+                        <p class="school">SSPŠ</p>
+                    </div>
+                </article>
+                <article class="member reveal">
+                    <div class="avatar" aria-hidden="true">JB</div>
+                    <div>
+                        <h3>Jan Beneš</h3>
+                        <p class="school">SPŠSE České Budějovice</p>
+                    </div>
+                </article>
+                <article class="member reveal">
+                    <div class="avatar" aria-hidden="true">ŠK</div>
+                    <div>
+                        <h3>Šimon Kubec</h3>
+                        <p class="school">SSPŠ</p>
+                    </div>
+                </article>
+                <article class="member reveal">
+                    <div class="avatar" aria-hidden="true">JK</div>
+                    <div>
+                        <h3>Jakub Kohoutek</h3>
+                        <p class="school">SSPŠ</p>
+                    </div>
+                </article>
+            </div>
         </section>
-    <aside>
-        <!-- <section id="galerie">
-            <h2>Galerie</h2>
-            <i>Galerie zatím neobsahuje žádné fotografie.</i>
-        </section> -->
-        <section id="kontakt">
-            <div class="container">
-                <h2>Kontakt</h2>
-                <div class="box">
-                    <div class="text">
-                        <h4>Napište nám</h4>
-                        <a href="mailto:cokoliv@humanoidcenda.cz">cokoliv@humanoidcenda.cz</a>
-                    </div>
-                    <img width="32" height="32" src="https://img.icons8.com/fluency-systems-regular/48/1A1A1A/new-post.png" alt="email-icon"/>
+
+        <!-- KONTAKT -->
+        <section id="kontakt" class="section">
+            <div class="contact reveal">
+                <div class="contact-main">
+                    <span class="eyebrow"><i></i> Kontakt</span>
+                    <h2>Máte nápad, dotaz nebo chcete spolupracovat?</h2>
+                    <a class="mail" href="mailto:cokoliv@humanoidcenda.cz">cokoliv@humanoidcenda.cz <span aria-hidden="true">→</span></a>
+                    <p class="address">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Preslova 25, 150 00 Praha 5‑Smíchov
+                    </p>
                 </div>
-                <div class="box">
-                    <div class="text">
-                        <h4>Kde nás najdete</h4>
-                        <span>Preslova 25, 150 00 Praha 5-Smíchov</span>
-                    </div>
-                    <img width="32" height="32" src="https://img.icons8.com/windows/32/1A1A1A/place-marker.png" alt="place-marker"/>
-                </div>
-            </div>
-            <div class="container">
-                <h2>Sponzor</h2>
-                <a href="https://www.ssps.cz" target="_blank">
-                    <img class="ssps-logo" src="./assets/logo-SSPS.png" alt="Logo SSPŠaG">
+                <a class="sponsor" href="https://www.ssps.cz" target="_blank" rel="noopener">
+                    <span>Sponzor</span>
+                    <img src="assets/logo-SSPS.png" alt="Logo SSPŠaG">
                 </a>
             </div>
         </section>
-    </aside>
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#harmonogram">Kde nás najdete?</a></li>
-                <li><a href="#o-projektu">O projektu</a></li>
-                <li><a href="#tym">Náš tým</a></li>
-                <!-- <li><a href="#galerie">Galerie</a></li> -->
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="logo-and-slogan">
-            <img class="logo" src="assets/logo-cenda.png"/>
-            <span class="slogan">Studentský Humanoid</span>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <img src="assets/logo-cenda.png" alt="Č.e.n.d.a" height="20">
+            <span>Studentský humanoid</span>
         </div>
-        <div class="rightbox">
-            <a href="https://www.instagram.com/humanoid.cenda/" target="_blank">Instagram</a>
-            <!-- <a href="">Facebook</a> -->
+        <nav aria-label="Patička">
+            <a href="#o-projektu">O projektu</a>
+            <a href="#harmonogram">Kde nás najdete</a>
+            <a href="#tym">Tým</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/humanoid.cenda/" target="_blank" rel="noopener">Instagram</a>
             <a href="mailto:cokoliv@humanoidcenda.cz">cokoliv@humanoidcenda.cz</a>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

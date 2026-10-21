@@ -1,30 +1,36 @@
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger-menu');
-    const nav = document.querySelector('header nav');
-
-    if (hamburger && nav) {
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
+    // Mobile menu
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('nav');
+    if (toggle && nav) {
+        const setOpen = (open) => {
+            nav.classList.toggle('active', open);
+            toggle.classList.toggle('active', open);
+            toggle.setAttribute('aria-expanded', String(open));
+        };
+        toggle.addEventListener('click', () => setOpen(!nav.classList.contains('active')));
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
     }
 
-    // Team section toggle
-    const teamSection = document.getElementById('tym');
-    if (teamSection) {
-        const toggleArrow = teamSection.querySelector('.toggle-arrow');
-        if (toggleArrow) {
-            toggleArrow.addEventListener('click', () => {
-                teamSection.classList.toggle('active');
+    // Reveal on scroll
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
             });
-        }
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        items.forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 4) * 70}ms`;
+            io.observe(el);
+        });
+    } else {
+        items.forEach(el => el.classList.add('in'));
     }
 });
