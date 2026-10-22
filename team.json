@@ -1,0 +1,9 @@
+{
+  "members": [
+    { "name": "Jan Doležal", "school": "SSPŠ", "role": "Vedení týmu", "photo": "assets/team/dolezal.jpg" },
+    { "name": "Jan Vitousek", "school": "SSPŠ", "role": "", "photo": "assets/team/vitousek.jpg" },
+    { "name": "Jan Beneš", "school": "SPŠSE České Budějovice", "role": "", "photo": "" },
+    { "name": "Šimon Kubec", "school": "SSPŠ", "role": "", "photo": "" },
+    { "name": "Jakub Kohoutek", "school": "SSPŠ", "role": "", "photo": "" }
+  ]
+}

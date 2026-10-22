@@ -359,3 +359,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; letter-spacing:
     .lead-member { grid-column: span 2; }
     .lead-member img { aspect-ratio: 16 / 10; object-position: center 30%; }
 }
+
+/* ---------- Dynamic team ---------- */
+.team-status { grid-column: 1 / -1; color: var(--muted); }
