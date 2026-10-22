@@ -362,3 +362,39 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; letter-spacing:
 
 /* ---------- Dynamic team ---------- */
 .team-status { grid-column: 1 / -1; color: var(--muted); }
+
+/* ---------- Síň slávy (alumni) ---------- */
+.alumni { display: flex; flex-direction: column; align-items: center; margin-top: 28px; }
+.alumni[hidden] { display: none; }
+.alumni-toggle {
+    display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+    background: none; border: 0; color: var(--muted); cursor: pointer; font: inherit;
+    padding: 8px 16px; border-radius: 14px; transition: color .2s;
+}
+.alumni-label { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.alumni-toggle svg { transition: transform .35s, color .2s; animation: nudge 2.4s ease-in-out infinite; }
+.alumni-toggle:hover { color: var(--accent); }
+.alumni-toggle[aria-expanded="true"] svg { transform: rotate(180deg); animation: none; }
+@keyframes nudge { 0%,100% { translate: 0 0; } 50% { translate: 0 4px; } }
+
+.alumni-panel {
+    width: 100%; display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
+    transition: grid-template-rows .5s ease, opacity .4s ease, visibility 0s .5s;
+}
+.alumni-panel.open { grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0s; }
+.alumni-inner { overflow: hidden; min-height: 0; }
+.alumni-inner h3 { font-size: 1.5rem; text-align: center; margin: 28px 0 6px; color: var(--accent); }
+.alumni-sub { text-align: center; color: var(--muted); margin-bottom: 28px; }
+.team-alumni { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); padding-bottom: 8px; }
+.team-alumni .member { padding: 10px 10px 16px; gap: 12px; }
+.team-alumni .member img { filter: grayscale(.8); }
+.team-alumni .member:hover img { filter: none; }
+.team-alumni .avatar { font-size: 1.8rem; }
+.team-alumni .member h3 { font-size: 1rem; }
+.team-alumni .lead-member { grid-column: auto; }
+.team-alumni .lead-member img { aspect-ratio: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .alumni-toggle svg { animation: none; }
+    .alumni-panel { transition: none; }
+}

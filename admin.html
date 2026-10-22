@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Správa týmu – Č.e.n.d.a</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
 <style>
     body { padding: 0 20px 120px; }
     .wrap { max-width: 860px; margin: 0 auto; padding-top: 40px; }
@@ -214,7 +214,7 @@
             const file = await gh(contentsUrl(TEAM_FILE) + '?ref=' + encodeURIComponent(state.branch));
             state.sha = file.sha;
             const data = JSON.parse(fromB64(file.content));
-            state.members = (data.members || []).map(m => ({ name: m.name || '', school: m.school || '', role: m.role || '', photo: m.photo || '', _new: null }));
+            state.members = (data.members || []).map(m => ({ name: m.name || '', school: m.school || '', role: m.role || '', photo: m.photo || '', alumni: !!m.alumni, _new: null }));
         } catch (e) {
             if (e.status !== 404) throw e;
             state.sha = null; state.members = [];
@@ -244,6 +244,7 @@
                     <div class="field full"><label>Jméno</label><input type="text" data-f="name"></div>
                     <div class="field"><label>Škola</label><input type="text" data-f="school"></div>
                     <div class="field"><label>Role (nepovinné, zvýrazní kartu)</label><input type="text" data-f="role" placeholder="např. Vedení týmu"></div>
+                    <label class="check full" style="margin:0"><input type="checkbox" data-f="alumni"> Bývalý člen – zobrazit v „Síni slávy“</label>
                 </div>
                 <div class="actions">
                     <button type="button" class="btn-icon" data-act="up" aria-label="Posunout výš" ${i === 0 ? 'disabled' : ''}>↑</button>
@@ -251,6 +252,7 @@
                     <button type="button" class="btn-icon btn-danger" data-act="delete" aria-label="Smazat">✕</button>
                 </div>`;
             ['name', 'school', 'role'].forEach(f => el.querySelector(`[data-f="${f}"]`).value = m[f]);
+            el.querySelector('[data-f="alumni"]').checked = m.alumni;
             box.appendChild(el);
             paintThumb(el, m);
         });
@@ -285,7 +287,7 @@
         const f = e.target.dataset.f; if (!f) return;
         const el = e.target.closest('.member-edit');
         const m = state.members[+el.dataset.i];
-        m[f] = e.target.value;
+        m[f] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         if (f === 'name' && !m._new && !m.photo) paintThumb(el, m);
         setDirty(true);
     });
@@ -330,7 +332,7 @@
     }
 
     $('add').addEventListener('click', () => {
-        state.members.push({ name: '', school: '', role: '', photo: '', _new: null });
+        state.members.push({ name: '', school: '', role: '', photo: '', alumni: false, _new: null });
         setDirty(true); render();
         const last = $('members').lastElementChild; last.scrollIntoView({ behavior: 'smooth', block: 'center' });
         last.querySelector('[data-f="name"]').focus();
@@ -357,7 +359,7 @@
             // 2) commit team.json
             setStatus('Ukládám tým…');
             const json = JSON.stringify({ members: state.members.map(m => ({
-                name: m.name.trim(), school: m.school.trim(), role: m.role.trim(), photo: m.photo })) }, null, 2) + '\n';
+                name: m.name.trim(), school: m.school.trim(), role: m.role.trim(), photo: m.photo, ...(m.alumni ? { alumni: true } : {}) })) }, null, 2) + '\n';
             let res;
             try {
                 res = await putTeam(json, state.sha);

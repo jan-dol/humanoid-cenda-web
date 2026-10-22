@@ -152,6 +152,20 @@
             <div class="team" id="team-list" aria-live="polite">
                 <p class="team-status">Načítám tým…</p>
             </div>
+
+            <div class="alumni" id="alumni" hidden>
+                <button type="button" class="alumni-toggle" id="alumni-toggle" aria-expanded="false" aria-controls="alumni-panel" title="Síň slávy – bývalí členové">
+                    <span class="alumni-label">Síň slávy</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="alumni-panel" id="alumni-panel" inert>
+                    <div class="alumni-inner">
+                        <h3>Síň slávy</h3>
+                        <p class="alumni-sub">Bývalí členové, kteří projekt posunuli dál.</p>
+                        <div class="team team-alumni" id="alumni-list"></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- KONTAKT -->
@@ -184,7 +198,7 @@
             <a href="#harmonogram">Kde nás najdete</a>
             <a href="#tym">Tým</a>
             <a href="#kontakt">Kontakt</a>
-            <a href="admin.html">Admin</a>
+            <a href="admin.html" class="admin-link">Admin</a>
         </nav>
         <div class="footer-links">
             <a href="https://www.instagram.com/humanoid.cenda/" target="_blank" rel="noopener">Instagram</a>
@@ -192,6 +206,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>

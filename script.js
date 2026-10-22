@@ -31,9 +31,9 @@ function initials(name) {
     return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
 }
 
-function memberCard(m) {
+function memberCard(m, animate = true) {
     const card = document.createElement('article');
-    card.className = 'member reveal' + (m.role ? ' lead-member' : '');
+    card.className = 'member' + (animate ? ' reveal' : '') + (m.role ? ' lead-member' : '');
 
     if (m.photo) {
         const img = document.createElement('img');
@@ -69,6 +69,24 @@ function memberCard(m) {
     return card;
 }
 
+function setupAlumni(alumni) {
+    const wrap = document.getElementById('alumni');
+    const toggle = document.getElementById('alumni-toggle');
+    const panel = document.getElementById('alumni-panel');
+    const grid = document.getElementById('alumni-list');
+    if (!wrap || !toggle || !panel || !grid) return;
+    wrap.hidden = alumni.length === 0;
+    if (!alumni.length) return;
+    grid.replaceChildren(...alumni.map(m => memberCard(m, false)));
+    toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        panel.classList.toggle('open', open);
+        panel.toggleAttribute('inert', !open);
+        if (open) setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 250);
+    });
+}
+
 async function loadTeam() {
     const list = document.getElementById('team-list');
     if (!list) return;
@@ -76,8 +94,12 @@ async function loadTeam() {
         const res = await fetch('team.json', { cache: 'no-cache' });
         if (!res.ok) throw new Error(res.status);
         const data = await res.json();
-        list.replaceChildren(...(data.members || []).map(memberCard));
+        const all = data.members || [];
+        const current = all.filter(m => !m.alumni);
+        const alumni = all.filter(m => m.alumni);
+        list.replaceChildren(...current.map(m => memberCard(m)));
         observeReveal(list);
+        setupAlumni(alumni);
     } catch (e) {
         list.innerHTML = '<p class="team-status">Tým se nepodařilo načíst.</p>';
     }
