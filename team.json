@@ -29,6 +29,13 @@
       "school": "SSPŠ",
       "role": "",
       "photo": ""
+    },
+    {
+      "name": "Anna Bučinská",
+      "school": "ČVUT FEL",
+      "role": "",
+      "photo": "",
+      "alumni": true
     }
   ]
 }
